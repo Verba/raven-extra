@@ -6,7 +6,7 @@ class Exception
 
   def with_extra(extra)
     self.extra ||= {}
-    self.extra.merge!(extra)
+    self.extra.deep_merge!(extra)
     self
   end
 
@@ -31,7 +31,7 @@ module Raven
 
       if exception.respond_to?(:extra) && extra = exception.extra
         self.extra ||= {}
-        self.extra.merge!(extra)
+        self.extra.deep_merge!(extra)
       end
     end
 
