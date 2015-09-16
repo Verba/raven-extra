@@ -25,6 +25,14 @@ class Object
 end
 
 module Raven
+  class << self
+    def capture_message_with_level(message, options={})
+      capture_message_without_level(message, options.reverse_merge(:level => :info))
+    end
+
+    alias_method_chain :capture_message, :level
+  end
+
   class Event
     def parse_exception_with_extra(exception)
       parse_exception_without_extra(exception)
