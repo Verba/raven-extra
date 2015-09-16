@@ -26,10 +26,20 @@ end
 
 module Raven
   class << self
+    def tags_context_with_string_keys(options = nil)
+      tags_context_without_string_keys(options.try(:stringify_keys))
+    end
+
+    def extra_context_with_string_keys(options = nil)
+      extra_context_without_string_keys(options.try(:stringify_keys))
+    end
+
     def capture_message_with_level(message, options={})
       capture_message_without_level(message, options.reverse_merge(:level => :info))
     end
 
+    alias_method_chain :tags_context, :string_keys
+    alias_method_chain :extra_context, :string_keys
     alias_method_chain :capture_message, :level
   end
 
