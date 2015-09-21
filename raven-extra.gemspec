@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "raven-extra"
-  spec.version       = "0.0.2"
+  spec.version       = "0.1.0"
   spec.authors       = ["John Firebaugh", "Mike Ragalie"]
   spec.email         = ["michael.ragalie@verbasoftware.com"]
   spec.description   = "Adds support for adding extra context to exceptions caught by Raven"
