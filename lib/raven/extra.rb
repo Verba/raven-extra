@@ -20,7 +20,11 @@ class Object
   def decorating_exceptions_with(extra, level=nil)
     yield
   rescue Exception => e
-    raise e.with_extra(extra).with_level(level)
+    if level
+      raise e.with_extra(extra).with_level(level)
+    else
+      raise e.with_extra(extra)
+    end
   end
 end
 
